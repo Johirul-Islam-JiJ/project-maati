@@ -2,7 +2,7 @@
 <!--  -->
 {% block main_content %}
 <style>
-    .main-section{
+    .main-section {
         height: 100vh;
     }
 </style>
@@ -21,13 +21,6 @@
                 <a href="#" class="nav-link active" aria-current="page">
                     <svg class="bi me-2" width="16" height="16">
                         <use xlink:href="#home"></use>
-                    </svg> Home
-                </a>
-            </li>
-            <li>
-                <a href="#" class="nav-link text-white">
-                    <svg class="bi me-2" width="16" height="16">
-                        <use xlink:href="#speedometer2"></use>
                     </svg> Dashboard
                 </a>
             </li>
@@ -35,21 +28,7 @@
                 <a href="#" class="nav-link text-white">
                     <svg class="bi me-2" width="16" height="16">
                         <use xlink:href="#table"></use>
-                    </svg> Orders
-                </a>
-            </li>
-            <li>
-                <a href="#" class="nav-link text-white">
-                    <svg class="bi me-2" width="16" height="16">
-                        <use xlink:href="#grid"></use>
-                    </svg> Products
-                </a>
-            </li>
-            <li>
-                <a href="#" class="nav-link text-white">
-                    <svg class="bi me-2" width="16" height="16">
-                        <use xlink:href="#people-circle"></use>
-                    </svg> Customers
+                    </svg> Post Land Information
                 </a>
             </li>
         </ul>
@@ -65,17 +44,60 @@
                 <li>
                     <hr class="dropdown-divider">
                 </li>
-                <li><a class="dropdown-item" href="#">Sign out</a></li>
+                <li><a class="dropdown-item" href="{%url 'logout'%}">Sign out</a></li>
             </ul>
         </div>
     </div>
-    <div>
-        HEllo
+    <div class="row w-100">
+        <div class="ms-2 mt-2 col-lg-12">
+            <div class="d-lg-flex justify-content-between">
+                <div class="card mb-3 pe-2 ms-0 pt-1 ps-1 me-2 pb-5 w-100 " >
+                    <div class="row g-0">
+                        <div class="col-md-12">
+                            <div class="d-flex justify-content-between">
+                                <h5 class="card-title"> <i class="fa fa-user pe-1 "></i> Total Seller</h5>
+                                <h5 class="card-title ms-2">0</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mb-3 pe-2 ms-0 pt-1 ps-1 me-2 pb-5 w-100" >
+                    <div class="row g-0">
+                        <div class="col-md-12">
+                            <div class="d-flex justify-content-between">
+                                <h5 class="card-title"><i class="fa fa-user pe-1"></i> Total Buyer</h5>
+                                <h5 class="card-title ms-2">0</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mb-3 pe-2 ms-0 pt-1 ps-1 me-2 pb-5 w-100" >
+                    <div class="row g-0">
+                        <div class="col-md-12">
+                            <div class="d-flex justify-content-between">
+                                <h5 class="card-title"> <i class="fa fa-home pe-1"></i>Total Lands</h5>
+                                <h5 class="card-title ms-2">0</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mb-3 pe-2 ms-0 pt-1 ps-1 me-2 pb-5 w-100" >
+                    <div class="row g-0">
+                        <div class="col-md-12">
+                            <div class="d-flex justify-content-between">
+                                <h5 class="card-title"><i class="fa fa-home pe-1"></i>Verified Lands</h5>
+                                <h5 class="card-title ms-2">0</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
-{% endblock main_content %} 
+{% endblock main_content %}
 <!--  -->
-{%block scripts%} 
+{%block scripts%}
 <!--  -->
 <!--  -->
 {%endblock scripts%}
