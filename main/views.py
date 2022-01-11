@@ -37,3 +37,8 @@ def mylogin(request):
 def mylogout(request):
     logout(request)
     return redirect('/login')
+
+
+def profile(request):
+    context = {"user": request.user,"title":"Profile | Maati"}
+    return render(request, 'profile.html', context)
