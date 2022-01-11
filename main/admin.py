@@ -1,15 +1,31 @@
 from django.contrib import admin
+from django.contrib.auth.admin import UserAdmin
 
-from main.models import buyer, seller
+from .forms import CustomUserCreationForm, CustomUserChangeForm
+from .models import  *
 
-# Register your models here.
+class CustomUserAdmin(UserAdmin):
+    add_form = CustomUserCreationForm
+    form = CustomUserChangeForm
+    model = CustomUser
+    list_display = ('email', 'is_staff', 'is_active',)
+    list_filter = ('email', 'is_staff', 'is_active',)
+    fieldsets = (
+        (None, {'fields': ('email', 'password')}),
+        ('Permissions', {'fields': ('is_staff', 'is_active')}),
+    )
+    add_fieldsets = (
+        (None, {
+            'classes': ('wide',),
+            'fields': ('email', 'password1', 'password2', 'is_staff', 'is_active')}
+         ),
+    )
+    search_fields = ('email',)
+    ordering = ('email',)
 
-class sellerAdmin(admin.ModelAdmin):
-    list_display = ['name','phone','email','nid','address']
 
-class buyerAdmin(admin.ModelAdmin):
-    list_display=['name','phone','email','nid','address']
-
-
-admin.site.register(seller,sellerAdmin)
-admin.site.register(buyer,buyerAdmin)
+admin.site.register(CustomUser, CustomUserAdmin)
+admin.site.register(ExtraInformation)
+admin.site.register(Buyer)
+admin.site.register(LandInformation)
+admin.site.register(Seller)
