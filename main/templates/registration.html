@@ -1,0 +1,50 @@
+{% extends 'base.html' %} {% block main_content %} {% comment %} main contents starts here {% endcomment %}
+<section class="main-section">
+    <div class="container">
+        <div class="text-center col-4 mx-auto mt-5" data-new-gr-c-s-check-loaded="14.1043.0" data-gr-ext-installed="">
+
+            <div class="form-signin">
+                <form method="POST">
+                    {%csrf_token%}
+                    <h1 class="h3 mb-3 fw-normal">Registration</h1>
+
+                    <div class="form-floating">
+                        <input type="text" name="name" class="form-control shadow-none" id="floatingInput" placeholder="name@example.com">
+                        <label for="floatingInput">Full Name</label>
+                    </div>
+                    <div class="form-floating mt-2">
+                        <input type="email" name="email" class="form-control shadow-none" id="floatingInput" placeholder="name@example.com">
+                        <label for="floatingInput">Email address</label>
+                    </div>
+                    <div class="form-floating mt-2">
+                        <textarea type="text" name="address" class="form-control shadow-none" id="floatingInput" placeholder="Address"></textarea>
+                        <label for="floatingInput">Address</label>
+                    </div>
+                    <div class="form-floating mt-2">
+                        <input type="password" name="password" class="form-control shadow-none" id="floatingPassword" placeholder="Password">
+                        <label for="floatingPassword">Password</label>
+                    </div>
+                    <div class="form-floating mt-2">
+                        <input type="password" name="cpassword" class="form-control shadow-none" id="floatingPassword" placeholder="Password">
+                        <label for="floatingPassword">Confirm Password</label>
+                    </div>
+                    <div class="form-floating mt-2">
+                        <select name="usertype" class="form-control shadow-none">
+                            <option value="">Choose...</option>
+                            <option value="buyer">Buyer</option>
+                            <option value="seller">Seller</option>
+                        </select>
+                        <label for="floatingInput">Register As</label>
+                    </div>
+                    
+                    <button class="w-100 btn btn-lg btn-primary mt-2" type="submit">Sign in</button>
+                </form>
+                <p>Already Have an account? <a href="{%url 'login'%}">Login</a></p>
+                <p class="mt-5 mb-3 text-muted">©2022</p>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+{% endblock main_content %} {%block scripts%} {% comment %} scripts starts here {% endcomment %} {% comment %} scripts ends here {% endcomment %} {%endblock scripts%}

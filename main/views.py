@@ -1,7 +1,7 @@
 from django.http.response import HttpResponse
 from django.shortcuts import redirect, render
 from django.contrib.auth import authenticate, login, logout
-
+from .models import *
 # Create your views here.
 
 def home(request):
@@ -32,6 +32,44 @@ def mylogin(request):
             return redirect('/login')
     context = {"title": "Login | Maati"}
     return render(request, 'login.html', context)
+
+def myregistration(request):
+    if request.user.is_authenticated:
+        return redirect('/')
+    if request.method == "POST":
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        confirm_password = request.POST.get('cpassword')
+        address = request.POST.get('address')
+        usertype = request.POST.get('usertype')
+        if usertype == "buyer":
+            user = CustomUser(
+                full_name = name,
+                email = email,
+                address = address,
+                is_buyer = True,
+                is_active = True
+            )
+            if password == confirm_password:
+                user.set_password(password)
+                user.save()
+                
+        else:
+            user = CustomUser(
+                full_name = name,
+                email = email,
+                address = address,
+                is_seller = True,
+                is_active = True
+            )
+            if password == confirm_password:
+                user.set_password(password)
+                user.save()
+        return redirect('/login')
+        
+    context = {"title": "Registration | Maati"}
+    return render(request, 'registration.html', context)
 
 
 def mylogout(request):
