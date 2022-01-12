@@ -36,7 +36,14 @@
         </li>
         {%if user.is_seller%}
         <li>
-          <a href="#" class="nav-link text-white">
+          <a href="{%url 'lands'%}" class="nav-link text-white">
+            <svg class="bi me-2" width="16" height="16">
+              <use xlink:href="#table"></use>
+            </svg> Land Information
+          </a>
+        </li>
+        <li>
+          <a href="{%url 'postlands'%}" class="nav-link text-white">
             <svg class="bi me-2" width="16" height="16">
               <use xlink:href="#table"></use>
             </svg> Post Land Information
@@ -45,12 +52,12 @@
         {%else%}
         <li>
           <a href="#" class="nav-link text-white">
-              <svg class="bi me-2" width="16" height="16">
-                  <use xlink:href="#table"></use>
-              </svg> Approve Land Info
+            <svg class="bi me-2" width="16" height="16">
+              <use xlink:href="#table"></use>
+            </svg> Approve Land Info
           </a>
-      </li>
-      {%endif%}
+        </li>
+        {%endif%}
       </ul>
       <hr>
       <div class="dropdown">
@@ -76,6 +83,8 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
     crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   {%block scripts%}
   <!-- scripts will be added here -->
   {%endblock scripts%}

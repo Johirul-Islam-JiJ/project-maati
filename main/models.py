@@ -32,7 +32,8 @@ class ExtraInformation(models.Model):
 
 class Buyer(models.Model):
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
-    info = models.ForeignKey(ExtraInformation, on_delete=models.CASCADE)
+    info = models.ForeignKey(ExtraInformation, on_delete=models.CASCADE, null=True , blank=True)
+    
 
 
 
@@ -48,5 +49,9 @@ class LandInformation(models.Model):
 
 class Seller(models.Model):
     user = models.OneToOneField(CustomUser, on_delete=CASCADE)
-    info = models.ForeignKey(ExtraInformation, on_delete=models.CASCADE)
-    
+    info = models.ForeignKey(ExtraInformation, on_delete=models.CASCADE, null=True, blank=True)
+
+
+class SellerLands(models.Model):
+    user = models.ForeignKey(Seller, on_delete=models.CASCADE)
+    land = models.ForeignKey(LandInformation, on_delete=models.CASCADE)

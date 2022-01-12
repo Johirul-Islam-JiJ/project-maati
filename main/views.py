@@ -54,6 +54,10 @@ def myregistration(request):
             if password == confirm_password:
                 user.set_password(password)
                 user.save()
+                seller = Seller(
+                    user = user,
+                )
+                seller.save()
                 
         else:
             user = CustomUser(
@@ -66,6 +70,10 @@ def myregistration(request):
             if password == confirm_password:
                 user.set_password(password)
                 user.save()
+                buyer = Buyer(
+                    user = user,
+                )
+                buyer.save()
         return redirect('/login')
         
     context = {"title": "Registration | Maati"}
@@ -80,6 +88,17 @@ def mylogout(request):
 def profile(request):
     context = {"user": request.user,"title":"Profile | Maati"}
     return render(request, 'profile.html', context)
+
+def lands(request):
+    seller = Seller.objects.get(user=request.user)
+    lands = SellerLands.objects.filter(user=seller).values('land')
+    # landinfo = LandInformation.objects.get
+    print(lands)
+    for i in lands:
+        print(i)
+    context = {"title": "Lands | Maati", "lands": lands}
+    return render(request, 'lands.html', context)
+
 
 def post_land_info(request):
     context = {"title":"Post Land Infor | Maati"}
