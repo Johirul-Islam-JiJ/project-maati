@@ -6,95 +6,53 @@
         height: 100vh;
     }
 </style>
-
-<section class="d-flex justify-content-start">
-    <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark main-section" style="width: 280px;">
-        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-            <svg class="bi me-2" width="40" height="32">
-                <use xlink:href="#bootstrap"></use>
-            </svg>
-            <span class="fs-4">{{title}}</span>
-        </a>
-        <hr>
-        <ul class="nav nav-pills flex-column mb-auto">
-            <li class="nav-item">
-                <a href="#" class="nav-link active" aria-current="page">
-                    <svg class="bi me-2" width="16" height="16">
-                        <use xlink:href="#home"></use>
-                    </svg> Dashboard
-                </a>
-            </li>
-            <li>
-                <a href="#" class="nav-link text-white">
-                    <svg class="bi me-2" width="16" height="16">
-                        <use xlink:href="#table"></use>
-                    </svg> Approve Land Info
-                </a>
-            </li>
-        </ul>
-        <hr>
-        <div class="dropdown">
-            <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
-                id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
-                <strong>{{user}}</strong>
-            </a>
-            <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-                <li><a class="dropdown-item" href="{%url 'profile'%}">Profile</a></li>
-                <li>
-                    <hr class="dropdown-divider">
-                </li>
-                <li><a class="dropdown-item" href="{%url 'logout'%}">Sign out</a></li>
-            </ul>
-        </div>
-    </div>
-    <div class="w-100">
-        <div class="ms-2 mt-2 col-lg-12">
-            <div class="d-lg-flex justify-content-between">
-                <div class="card mb-3 pe-2 ms-0 pt-1 ps-1 me-2 pb-5 w-100 ">
-                    <div class="row g-0">
-                        <div class="col-md-12">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="card-title"> <i class="fa fa-user pe-1 "></i> Total Seller</h5>
-                                <h5 class="card-title ms-2">0</h5>
-                            </div>
+<div class="w-100">
+    <div class="ms-2 mt-2 col-lg-12">
+        <div class="d-lg-flex justify-content-between">
+            <div class="card mb-3 pe-2 ms-0 pt-1 ps-1 me-2 pb-5 w-100 ">
+                <div class="row g-0">
+                    <div class="col-md-12">
+                        <div class="d-flex justify-content-between">
+                            <h5 class="card-title"> <i class="fa fa-user pe-1 "></i> Total Seller</h5>
+                            <h5 class="card-title ms-2">0</h5>
                         </div>
                     </div>
                 </div>
-                <div class="card mb-3 pe-2 ms-0 pt-1 ps-1 me-2 pb-5 w-100">
-                    <div class="row g-0">
-                        <div class="col-md-12">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="card-title"><i class="fa fa-user pe-1"></i> Total Buyer</h5>
-                                <h5 class="card-title ms-2">0</h5>
-                            </div>
+            </div>
+            <div class="card mb-3 pe-2 ms-0 pt-1 ps-1 me-2 pb-5 w-100">
+                <div class="row g-0">
+                    <div class="col-md-12">
+                        <div class="d-flex justify-content-between">
+                            <h5 class="card-title"><i class="fa fa-user pe-1"></i> Total Buyer</h5>
+                            <h5 class="card-title ms-2">0</h5>
                         </div>
                     </div>
                 </div>
-                <div class="card mb-3 pe-2 ms-0 pt-1 ps-1 me-2 pb-5 w-100">
-                    <div class="row g-0">
-                        <div class="col-md-12">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="card-title"> <i class="fa fa-home pe-1"></i>Total Lands</h5>
-                                <h5 class="card-title ms-2">0</h5>
-                            </div>
+            </div>
+            <div class="card mb-3 pe-2 ms-0 pt-1 ps-1 me-2 pb-5 w-100">
+                <div class="row g-0">
+                    <div class="col-md-12">
+                        <div class="d-flex justify-content-between">
+                            <h5 class="card-title"> <i class="fa fa-home pe-1"></i>Total Lands</h5>
+                            <h5 class="card-title ms-2">0</h5>
                         </div>
                     </div>
                 </div>
-                <div class="card mb-3 pe-2 ms-0 pt-1 ps-1 me-2 pb-5 w-100">
-                    <div class="row g-0">
-                        <div class="col-md-12">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="card-title"><i class="fa fa-home pe-1"></i>Verified Lands</h5>
-                                <h5 class="card-title ms-2">0</h5>
-                            </div>
+            </div>
+            <div class="card mb-3 pe-2 ms-0 pt-1 ps-1 me-2 pb-5 w-100">
+                <div class="row g-0">
+                    <div class="col-md-12">
+                        <div class="d-flex justify-content-between">
+                            <h5 class="card-title"><i class="fa fa-home pe-1"></i>Verified Lands</h5>
+                            <h5 class="card-title ms-2">0</h5>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</section>
+</div>
+
 {% endblock main_content %}
 <!--  -->
 {%block scripts%}

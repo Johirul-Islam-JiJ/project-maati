@@ -80,3 +80,7 @@ def mylogout(request):
 def profile(request):
     context = {"user": request.user,"title":"Profile | Maati"}
     return render(request, 'profile.html', context)
+
+def post_land_info(request):
+    context = {"title":"Post Land Infor | Maati"}
+    return render(request, 'post_land.html', context)
