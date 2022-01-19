@@ -1,0 +1,58 @@
+{% extends 'buyerbase.html' %}
+<!--  -->
+{% block main_content %}
+<!--  -->
+<style>
+    #sub-frame-error {
+        display: none !important;
+    }
+</style>
+
+<section class="recomendatiaons">
+
+    <div class="bg-light shadow-sm mx-auto">
+
+        <div class="container">
+
+            <div class="row ">
+                <div class="col-9 p-3">
+                    <p class="mx-auto fs-5 fw-bold">Land Information</p>
+                    <img src="{{land.land_image.url}}" class="card-img-top" alt="">
+                    <div class="col-4">
+                        {%if land.land_paper_images_first.url%}
+                        <p>Paper Images</p>
+                        <img src="{{land.land_paper_images_first.url}}" alt="">
+                        <img src="{{land.land_paper_images_second.url}}" alt="">
+                        <img src="{{land.land_paper_images_third.url}}" alt="">
+                        <!--  -->
+                        {%endif%}
+
+
+                    </div>
+                    <div class="col-4"></div>
+                    <div class="col-4"></div>
+                    <div class="">
+                        <p class="text-dark">Total Area: {{land.total_area}}</p>
+                        {{map | safe}}
+                    </div>
+                </div>
+                <div class="col-3">
+                    <p class="mx-auto fs-5 fw-bold">Seller Information</p>
+                    <div>
+                        <p class="mb-0">Name: {{seller.user.user.full_name}}</p>
+                        <p class="mb-0">Email: {{seller.user.user.email}}</p>
+                        <p class="mb-0">Address: {{seller.user.user.address}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+{% endblock main_content %}
+<!--  -->
+{%block scripts%}
+<!--  -->
+<!--  -->
+{%endblock scripts%}

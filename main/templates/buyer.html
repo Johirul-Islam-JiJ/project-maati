@@ -1,20 +1,48 @@
 {% extends 'buyerbase.html' %}
-
+<!--  -->
 {% block main_content %}
-{% comment %} main contents starts here {% endcomment %}
+<!--  -->
+
 <section class="main section">
-    <h1>Buyer</h1>
+    <main>
+        <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
+            <div class="col-md-5 p-lg-5 mx-auto my-5">
+                <h1 class="display-4 fw-normal">Project Maati</h1>
+                <p class="lead fw-normal">
+                    A Trustworthy platform to commamorate with only dedicated for realstate business platform
+                </p>
+                <a class="btn btn-outline-secondary shadow-none" href="#">See Lands</a>
+            </div>
+            <div class="product-device shadow-sm d-none d-md-block"></div>
+            <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
+        </div>
+    </main>
+</section>
+<section class="recomendatiaons">
+    <div class="bg-dark me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
+        <div class="my-3 py-3">
+            <h2 class="display-5">Recommendations</h2>
+        </div>
+        <div class="bg-light shadow-sm mx-auto " style="width: 63.8%; border-radius: 21px 21px 0 0;">
+            <div class="row ">
+                {%for i in approved_lands%}
+                <div class="card p-3" style="width: 18rem;">
+                    <img src="{{i.land_image.url}}" class="card-img-top" alt="">
+                    <div class="card-body">
+                        <p class="text-dark">{{i.total_area}}</p>
+                        <a href="{%url 'get_info' slug=i.pk%}" class="card-link">See Full Information</a>
+                    </div>
+                </div>
+                {%endfor%}
+            </div>
+
+        </div>
+    </div>
 </section>
 
-{% comment %} main contents ends here {% endcomment %}
 {% endblock main_content %}
-
-
-{% comment %} scripts section {% endcomment %}
-
+<!--  -->
 {%block scripts%}
-{% comment %} scripts starts here {% endcomment %}
-
-
-{% comment %} scripts ends here {% endcomment %}
+<!--  -->
+<!--  -->
 {%endblock scripts%}

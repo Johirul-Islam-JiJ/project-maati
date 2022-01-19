@@ -1,0 +1,33 @@
+{% extends 'buyerbase.html' %}
+<!--  -->
+{% block main_content %}
+<!--  -->
+
+<section class="recomendatiaons">
+
+    <div class="bg-light shadow-sm mx-auto">
+
+        <div class="container">
+            <p class="mx-auto fs-5 fw-bold">All Lands</p>
+            <div class="row ">
+                {%for i in lands%}
+                <div class="card p-3" style="width: 18rem;">
+                    <img src="{{i.land_image.url}}" class="card-img-top" alt="">
+                    <div class="card-body">
+                        <p class="text-dark">{{i.total_area}}</p>
+                        <a href="{%url 'get_info' slug=i.pk%}" class="card-link">See Full Information</a>
+                    </div>
+                </div>
+                {%endfor%}
+            </div>
+        </div>
+
+    </div>
+</section>
+
+{% endblock main_content %}
+<!--  -->
+{%block scripts%}
+<!--  -->
+<!--  -->
+{%endblock scripts%}

@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+<!--  -->
+{% block main_content %}
+<style>
+    .main-section {
+        height: 100vh;
+    }
+</style>
+
+<div class="w-100">
+    <div class="ms-2 mt-2">
+        <p class="fs-5 fw-bolder ms-2">Approve Lands</p>
+        {%csrf_token%}
+        <div class="row ms-1">
+            {%for i in lands%}
+            <div class="card ms-2 mb-2" style="width: 18rem">
+                <img src="{{i.land_image.url}}" class="card-img-top" alt="..." />
+                <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                        <div>Total Area</div>
+                        <div>{{i.total_area}} Acor</div>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <div>Minimum Amount</div>
+                        <div>{{i.minimum_price}} Taka</div>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <div>Maximum Amount</div>
+                        <div>{{i.maximum_price}} Taka</div>
+                    </div>
+                    <form method="POST">
+                        {%csrf_token%}
+                        <input type="hidden" name="land" value="{{i.pk}}">
+                        <!--  -->
+                        {%if i.is_approved == True%}
+                        <!--  -->
+                        <div class="text-primary fw-bold">Approved</div>
+                        <!--  -->
+                        {%else%}
+                        <!--  -->
+                        <button class="btn btn-primary">Approve</button>
+                        <!--  -->
+                        {%endif%}
+                    </form>
+
+                </div>
+            </div>
+            {%endfor%}
+        </div>
+    </div>
+</div>
+
+{% endblock main_content %}
+<!--  -->
+{%block scripts%}
+<!--  -->
+<!--  -->
+{%endblock scripts%}

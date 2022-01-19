@@ -1,3 +1,4 @@
+from email.policy import default
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser
 from django.contrib.auth.models import PermissionsMixin
@@ -35,8 +36,6 @@ class Buyer(models.Model):
     info = models.ForeignKey(ExtraInformation, on_delete=models.CASCADE, null=True , blank=True)
     
 
-
-
 class LandInformation(models.Model):
     total_area = models.CharField(max_length=120)
     minimum_price = models.CharField(max_length=120)
@@ -44,6 +43,9 @@ class LandInformation(models.Model):
     longitude = models.CharField(max_length=120)
     latitude = models.CharField(max_length=120)
     land_image = models.ImageField(upload_to="land/")
+    land_paper_images_first = models.ImageField(upload_to="papers/", default="_")
+    land_paper_images_second = models.ImageField(upload_to="papers/",  default="_")
+    land_paper_images_third = models.ImageField(upload_to="papers/",  default="_")
     is_approved = models.BooleanField(default=True)
 
 

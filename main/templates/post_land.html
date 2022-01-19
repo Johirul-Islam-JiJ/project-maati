@@ -8,14 +8,44 @@
 </style>
 
 
-    <div class="w-100">
-        <div class="ms-2 mt-2">
-            <p class="fs-14 fw-bolder">Submit Your Land Information</p>
-            <form method="POST">
-                
-            </form>
-        </div>
+<div class="w-100">
+    <div class="ms-2 mt-2">
+        <p class="fs-5 fw-bolder">Submit Your Land Information</p>
+        <form method="POST" class="p-2" enctype="multipart/form-data">
+            {%csrf_token%}
+            <div class="row">
+                <div class="col-12">
+                    <label for="">Total Area</label>
+                    <input type="text" class="form-control shadow-none" name="total_area">
+                </div>
+                <div class="col-6">
+                    <label for="">Minimum Price</label>
+                    <input type="text" class="form-control shadow-none" name="min_price">
+                </div>
+                <div class="col-6">
+                    <label for="">Maximum Price</label>
+                    <input type="text" class="form-control shadow-none" name="max_price">
+                </div>
+                <div class="col-6">
+                    <label for="">Latitude</label>
+                    <input type="text" class="form-control shadow-none" name="longitude">
+                </div>
+                <div class="col-6">
+                    <label for="">Longitude</label>
+                    <input type="text" class="form-control shadow-none" name="latitude">
+                </div>
+                <div class="col-12">
+                    <label for="">Land Image</label>
+                    <input type="file" class="form-control shadow-none" name="land_image">
+                </div>
+                <div class="col-12 d-flex justify-content-end mt-2">
+                    <button class="btn btn-primary shadow-none "> Submit</button>
+                </div>
+            </div>
+
+        </form>
     </div>
+</div>
 
 {% endblock main_content %}
 <!--  -->

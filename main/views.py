@@ -2,15 +2,22 @@ from django.http.response import HttpResponse
 from django.shortcuts import redirect, render
 from django.contrib.auth import authenticate, login, logout
 from .models import *
+import folium
+from folium.map import Tooltip
+from django.conf import settings
 # Create your views here.
 
 def home(request):
+    approved_lands = LandInformation.objects.filter(is_approved=True)
     if not request.user.is_authenticated:
         return redirect('/login')
-    context = {"title":"Home | Maati"}
+        
+    context = {"title":"Home | Maati","approved_lands": approved_lands[0:4]}
     if request.user.is_seller:
         return render(request, 'seller.html', context)
     if request.user.is_buyer:
+        
+
         return render(request, 'buyer.html', context)
     if request.user.is_superuser:
         return render(request, 'home.html', context)
@@ -91,15 +98,70 @@ def profile(request):
 
 def lands(request):
     seller = Seller.objects.get(user=request.user)
-    lands = SellerLands.objects.filter(user=seller).values('land')
+    lands = SellerLands.objects.select_related().filter(user=seller)
     # landinfo = LandInformation.objects.get
-    print(lands)
-    for i in lands:
-        print(i)
+
     context = {"title": "Lands | Maati", "lands": lands}
     return render(request, 'lands.html', context)
 
 
 def post_land_info(request):
+
+    if request.method == "POST":
+        land = LandInformation(
+            total_area = request.POST["total_area"],
+            minimum_price = request.POST["min_price"],
+            maximum_price = request.POST["max_price"],
+            longitude = request.POST["longitude"],
+            latitude = request.POST["latitude"],
+            land_image = request.FILES["land_image"],
+            is_approved= False
+        )
+        land.save()
+
     context = {"title":"Post Land Infor | Maati"}
     return render(request, 'post_land.html', context)
+
+
+def approve_lands(request):
+    if request.method == "POST":
+        land = request.POST.get('land')
+        LandInformation.objects.filter(pk=land).update(is_approved=True)
+
+    # context
+    lands = LandInformation.objects.all()
+    context = {"title": "Approve Lands | Maati", "lands": lands}
+    return render(request, 'approve_land.html', context)
+
+def all_lands(request):
+    lands = LandInformation.objects.all()
+    context = {"title" :"All Land Infos | Maati","lands": lands }
+    return render(request, "all_lands.html", context)
+
+def get_full_info(request, slug):
+    land = LandInformation.objects.get(pk=slug)
+
+
+    m = folium.Map(location=[land.longitude, land.latitude],tiles="Stamen Terrain", zoom_start=12)
+
+    Tooltip='Click for more info'
+
+    folium.Marker([land.longitude, land.latitude], 
+                    popup='<strong>Location One</strong>',
+                    tooltip=Tooltip).add_to(m)
+
+    folium.CircleMarker(
+        location=[land.longitude, land.latitude],
+        radius=50,
+        popup='My area',
+        color ='#428bca',
+        fill = True,
+        fill_color ='#428bca'
+    ).add_to(m)
+
+    seller = SellerLands.objects.get(pk=land.pk)
+    print(seller)
+
+
+    context = {"title":"Land Info | Maati", "land" : land, "map":m._repr_html_(),"seller": seller}
+    return render(request, "land_info.html", context)

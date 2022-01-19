@@ -7,16 +7,39 @@
     }
 </style>
 
-
-    <div class="w-100">
-        <div>
-            {%for i in lands%}
-                <div>
-                    
+<div class="w-100">
+    <h1 class="ms-3">Lands Information</h1>
+    <div class="row ms-2">
+        {%for i in lands%}
+        <div class="card ms-2" style="width: 18rem;">
+            <img src="{{i.land.land_image.url}}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <div>Total Area</div>
+                    <div>{{i.land.total_area}} Acor</div>
                 </div>
-            {%endfor%}
+                <div class="d-flex justify-content-between">
+                    <div>Minimum Amount</div>
+                    <div>{{i.land.minimum_price}} Acor</div>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <div>Maximum Amount</div>
+                    <div>{{i.land.maximum_price}} Acor</div>
+                </div>
+                {%if i.land.is_approved == True%}
+                <!--  -->
+                <div class="text-primary fw-bold">Approved</div>
+                <!--  -->
+                {%else%}
+                <!--  -->
+                <div class="text-danger fw-bold">Not Approved</div>
+                <!--  -->
+                {%endif%}
+            </div>
         </div>
+        {%endfor%}
     </div>
+</div>
 
 {% endblock main_content %}
 <!--  -->
